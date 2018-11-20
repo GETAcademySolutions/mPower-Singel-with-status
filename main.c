@@ -515,7 +515,7 @@ void onNewCommand(ble_evt_t const *p_ble_evt) {
       }
       NRF_LOG_INFO("RANDOM!!!! port = %0x", port);
     }
-    if (port == 0xff || isPortFree(port) == false){
+    if (command != 0 && (port == 0xff || isPortFree(port) == false)){
       NRF_LOG_INFO("No port available")
       // All ports not available
       ack_msg = (0xff << 8) | 0x00;
