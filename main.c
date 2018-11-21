@@ -460,23 +460,19 @@ static void on_adv_evt(ble_adv_evt_t ble_adv_evt)
 
 
 // Max port number set to 4 in test
-#define MAX_USB_PORT_NUMBER     4
-#define TURN_USB_POWER_OFF      0
-#define TURN_USB_POWER_ON       1
-#define CHOOSE_AVAILABLE_PORT 255
-//TODO Test data
-#define TEST_TIME       1000 * 20
+// Moved defines to our_service.h
 
 void onNewCommand(ble_evt_t const *p_ble_evt) {
     // Edgar: Write event - decode the data set by client:
     // 1st byte: command - 0=off, 1=on
     // 2nd byte: port number
+    //           legal port number is: 1 - MAX_USB_PORT_NUMBER
 
     NRF_LOG_INFO("onNewCommand() enter");
 
     //ble_gatts_evt_write_t const *p_evt_write = &p_ble_evt->evt.gatts_evt.params.write;
 
-    uint8_t *p_data = p_ble_evt->evt.gatts_evt.params.write.data;
+    uint8_t *p_data = (uint8_t*) p_ble_evt->evt.gatts_evt.params.write.data;
     uint16_t length = p_ble_evt->evt.gatts_evt.params.write.len;
     uint8_t command = 0xff;
     uint8_t port = 0xff;
@@ -493,9 +489,7 @@ void onNewCommand(ble_evt_t const *p_ble_evt) {
     
     } else if (length == 1) {
       command = p_data[0];
-      
-      // Allocate free USB port
-      port = 1;
+      port = CHOOSE_AVAILABLE_PORT;
 
       NRF_LOG_INFO("data received: length=%0x, command=%0x, port=allocate", length, command);
     } else {
@@ -505,6 +499,8 @@ void onNewCommand(ble_evt_t const *p_ble_evt) {
         return;
     }
 
+    //edgar: jeg har lagt til en egen funksjon for å allokere ledig port
+    /*
     if (port == CHOOSE_AVAILABLE_PORT)
     {
       for(int i = 1; i <= MAX_USB_PORT_NUMBER; i++){
@@ -515,8 +511,14 @@ void onNewCommand(ble_evt_t const *p_ble_evt) {
       }
       NRF_LOG_INFO("RANDOM!!!! port = %0x", port);
     }
-    if (command != 0 && (port == 0xff || isPortFree(port) == false)){
-      NRF_LOG_INFO("No port available")
+    */
+    
+    if (port == CHOOSE_AVAILABLE_PORT) {
+      port = allocateFreePort();
+    }
+
+    if (port == ERROR_NO_AVAILABLE_PORT || port == ERROR_ILLEGAL_PORT || getPortStatus(port) != FREE_CHARGE) {
+      NRF_LOG_INFO("Illegal port or No port available")
       // All ports not available
       ack_msg = (0xff << 8) | 0x00;
       our_notification(&m_our_service, &ack_msg);
@@ -529,7 +531,7 @@ void onNewCommand(ble_evt_t const *p_ble_evt) {
         
           // update port status
           //TODO CHANGE TIME TO ACTUAL CHARGE TIME
-          innitPortStatus(port, 2, TEST_TIME);
+          initPortStatus(port, ACTIVE_CHARGE, TEST_TIME);
 
           // send ack
           ack_msg = (port << 8) | 0x01; 
@@ -541,7 +543,7 @@ void onNewCommand(ble_evt_t const *p_ble_evt) {
 
           // update port status
           //TODO CHANGE TIME TO ACTUAL CHARGE TIME
-          innitPortStatus(port, 0, TEST_TIME);
+          initPortStatus(port, AVAILABLE, TEST_TIME);
 
           // send ack
           ack_msg = (port << 8) | 0x01; 
@@ -551,7 +553,7 @@ void onNewCommand(ble_evt_t const *p_ble_evt) {
       }
     }
     //TODO testStuff status
-    usbStatus portStatusValue = getPortStatus(port);
+    UsbPortStatus portStatusValue = getPortStatus(port);
     NRF_LOG_INFO("Status is %x", portStatusValue);
 
     NRF_LOG_INFO("onNewCommand() leave");

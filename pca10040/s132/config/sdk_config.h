@@ -7529,7 +7529,7 @@
 // <4=> Debug 
 
 #ifndef TASK_MANAGER_CONFIG_LOG_LEVEL
-#define TASK_MANAGER_CONFIG_LOG_LEVEL 3
+#define TASK_MANAGER_CONFIG_LOG_LEVEL 4
 #endif
 
 // <o> TASK_MANAGER_CONFIG_INFO_COLOR  - ANSI escape code prefix.

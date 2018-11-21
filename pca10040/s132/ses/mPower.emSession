@@ -28,10 +28,6 @@
   <ProjectSessionItem path="Africa Clean Charging"/>
   <ProjectSessionItem path="Africa Clean Charging;mPower"/>
   <ProjectSessionItem path="Africa Clean Charging;mPower;Application"/>
-  <ProjectSessionItem path="Africa Clean Charging;mPower;Board Support"/>
-  <ProjectSessionItem path="Africa Clean Charging;mPower;nRF_BLE"/>
-  <ProjectSessionItem path="Africa Clean Charging;mPower;nRF_Libraries"/>
-  <ProjectSessionItem path="Africa Clean Charging;mPower;nRF_Log"/>
  </Project>
  <Register1>
   <RegisterWindow visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="nrf52-ble-tutorial-characteristic" decimalNodes="" octalNodes="" unsignedNodes=""/>
@@ -68,11 +64,10 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="12" y="31" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../our_service.h" selected="0" top="36" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="39" y="23" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../our_service.c" selected="0" top="21" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="857" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="1" top="658" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="43" y="7496" useTextEdit="1" useBinaryEdit="0" left="0" path="../config/sdk_config.h" selected="0" top="7489" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="326" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/libraries/bsp/bsp.c" selected="0" top="303" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="48" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../our_service.h" selected="1" top="38" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="10" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../our_service.c" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="463" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="0" top="445" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="7496" useTextEdit="1" useBinaryEdit="0" left="0" path="../config/sdk_config.h" selected="0" top="7490" codecName="Default"/>
  </Files>
- <ARMCrossStudioWindow activeProject="mPower" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" debugSearchFileMap="" fileDialogInitialDirectory="C:/nordicsemi/Tutorials Devzone/nRF5_SDK_15.0.0_a53641a/examples/ble_peripheral/nrf5-ble-tutorial-characteristic" debugSearchPath="" autoConnectCapabilities="3711"/>
+ <ARMCrossStudioWindow activeProject="mPower" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" debugSearchFileMap="" fileDialogInitialDirectory="C:/nordicsemi/Tutorials Devzone/nRF5_SDK_15.0.0_a53641a/examples/ble_peripheral/nrf5-ble-tutorial-characteristic" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>
